@@ -1,4 +1,4 @@
-package com.ksr.weatherapp.dto;
+package com.ksr.weatherapp.dto.external;
 
 import lombok.Data;
 
