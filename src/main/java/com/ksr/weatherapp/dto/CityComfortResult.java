@@ -8,4 +8,5 @@ public class CityComfortResult {
     private String description;
     private double temp;
     private double comfortScore;
+    private int rank;
 }

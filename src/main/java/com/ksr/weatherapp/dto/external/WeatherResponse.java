@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class WeatherRes {
+public class WeatherResponse {
     private int id;
     private String name;
     private Main main;
