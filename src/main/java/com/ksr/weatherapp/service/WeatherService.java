@@ -44,6 +44,7 @@ public class WeatherService {
             WeatherResponse response = getWeatherForCity(cityCode);
 
             CityComfortResult result = new CityComfortResult();
+            result.setId(response.getId());
             result.setCityName(response.getName());
             result.setDescription(response.getWeather().getFirst().getDescription());
             result.setTemp(response.getMain().getTemp());
