@@ -86,6 +86,7 @@ public class WeatherService {
         double temp = response.getMain().getTemp();
         double humidity = response.getMain().getHumidity();
         double wind = response.getWind().getSpeed();
+        int visibility = response.getVisibility();
 
         //considering real world scenarios, ideal temp 20 - 25 Celsius & humidity 50% & wind 2-3 (2.5) m/s
         double idealTemp = 22.5, idealHumidity = 50, idealWind = 2.5;
@@ -96,8 +97,9 @@ public class WeatherService {
         double tempScore = 100 - Math.abs(temp - idealTemp) * tempPenalty;
         double humidityScore = 100 - Math.abs(humidity - idealHumidity) * humidityPenalty;
         double windScore = 100 - Math.abs(wind - idealWind) * windPenalty;
+        double visibilityScore = (visibility / 10000.0) * 100;
 
-        double comfortScore = (tempScore * 0.5) + (humidityScore * 0.3) + (windScore * 0.2);
+        double comfortScore = (tempScore * 0.4) + (humidityScore * 0.3) + (windScore * 0.2) + (visibilityScore * 0.1);
         comfortScore = Math.clamp(comfortScore, 0, 100);
 
         return Math.round(comfortScore * 100.0) / 100.0;
